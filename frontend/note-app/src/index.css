@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Kufi+Arabic:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: "Inter", "sans-serif";
+  }
+  body {
+    background-color: #fdfeff;
+    overflow-x: hidden;
+  }
+}
+
+@theme {
+  /* Colors */
+  --color-primary: #2b85ff;
+  --color-secondary: #ef863e;
+}
+
+@layer componates {
+  .btn-primary {
+    @apply w-full bg-primary text-sm text-white rounded p-2 my-1 hover:bg-blue-600;
+  }
+  .input-box {
+    @apply w-full text-sm bg-transparent rounded  px-5 py-3 mb-4 border-[1.5px]  outline-none text-black;
+  }
+  .icon-btn {
+    @apply text-xl hover:text-primary cursor-pointer text-slate-300;
+  }
+  .input-label {
+    @apply text-xs uppercase text-slate-500;
+  }
+  .toaster-animation {
+    @apply text-xs uppercase text-slate-500;
+  }
+}
