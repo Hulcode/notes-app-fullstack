@@ -37,7 +37,12 @@ async function createAccountPost(req, res) {
     const user = await User.create({ fullName, email, password });
     const token = createToken(user._id);
 
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+      secure: true, // ← add
+      sameSite: "none",
+    });
     res.status(200).json({
       user: user,
       message: "regestration sucessfully",
@@ -75,7 +80,12 @@ async function loginAccountPost(req, res) {
     }
 
     const token = createToken(user._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+      secure: true, // ← add
+      sameSite: "none",
+    });
     res.status(200).json({
       email: user.email,
       message: "Logged in successfully",
@@ -90,7 +100,11 @@ async function loginAccountPost(req, res) {
   }
 }
 function logoutPost(req, res) {
-  res.cookie("jwt", "", { maxAge: 1 });
+  res.cookie("jwt", "", {
+    maxAge: 1,
+    secure: true, // ← add
+    sameSite: "none",
+  });
   res.status(200).json({ message: "Logged out successfully" });
 }
 async function getUser(req, res) {
