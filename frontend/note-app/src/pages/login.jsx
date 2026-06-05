@@ -30,7 +30,7 @@ const Login = () => {
 
       if (res.data && !res.data.error) {
         // ✅ only navigate on success
-        navigate("/dashboard");
+        navigate("/");
       }
     } catch (err) {
       setError(
